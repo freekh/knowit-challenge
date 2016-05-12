@@ -31,7 +31,7 @@ class ViewController3: UIViewController {
     alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
       switch action.style {
         case .Default:
-          let urlEncoded = phoneNumber.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
+          let urlEncoded = phoneNumber.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())! //Not entirely sure this is the correct encoding
           if let telUrl = NSURL(string: "tel://\(urlEncoded)") {
             print("Opening url", telUrl)
             UIApplication.sharedApplication().openURL(telUrl  )

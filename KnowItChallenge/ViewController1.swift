@@ -88,7 +88,7 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
     //Not sure I would do this in the wild, but it is good fun for this exercise
     let (combinedTotal, combinedExpected) = progressByTask.reduce((Int64(0), Int64(0)), combine: { (accumulator, current) in
       //Could do this more elegantly?
-      //Not sure if it is possible use pattern matching/partial function directly in Swift?
+      //Not sure if it is possible use function destructring/partial functions in Swift?
       let (accTotal, accExpected) = accumulator
       let (_, combined) = current
       let (combinedTotal, combinedExpected) = combined

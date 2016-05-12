@@ -45,6 +45,8 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
         imageView.image = UIImage(named: "Spinner")
         //A bit unnecessary to use downloadTask (which creates a tmp file) could have used dataTask, but it was easier to calculate the progress like that...
         session!.downloadTaskWithURL(checkedUrl).resume()
+      } else {
+        print("WARNING: no image view for", checkedUrl)
       }
     }
   }

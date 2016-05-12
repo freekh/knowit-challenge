@@ -18,8 +18,10 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
   @IBOutlet weak var image3: UIImageView!
   @IBOutlet weak var image4: UIImageView!
 
+  // MARK: Session
+  var session: NSURLSession? //Uncertain if we need this reference. Put it there to avoid it being deallocated by ARC or whatnot when viewDidLoad goes out of scope. Could have looked that one up or asked an iOS expert...
+
   // MARK: Progress
-  var session:NSURLSession?
   var progressByTask: Dictionary<NSURLSessionDownloadTask, (Int64, Int64)> = [:]
   var urlImageMapping: Dictionary<NSURL, UIImageView> = [:]
 
@@ -41,7 +43,7 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
       if let imageView = imageViews[index] {
         urlImageMapping[checkedUrl] = imageView
         imageView.image = UIImage(named: "Spinner")
-        //This seems to be async
+        //A bit unnecessary to use downloadTask (which creates a tmp file) could have used dataTask, but it was easier to get the progress bar like that...
         session!.downloadTaskWithURL(checkedUrl).resume()
       }
     }
@@ -66,7 +68,8 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
     }
   }
 
-  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask,
+                  didFinishDownloadingToURL location: NSURL) {
     let data = NSData(contentsOfURL: location)!
     let url = downloadTask.originalRequest?.URL
     let imageView = urlImageMapping[url!]
@@ -76,7 +79,9 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
     }
   }
 
-  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask,
+                  didWriteData bytesWritten: Int64, totalBytesWritten: Int64,
+                               totalBytesExpectedToWrite: Int64) {
     progressByTask[downloadTask] = (totalBytesWritten, totalBytesExpectedToWrite)
     //Not sure I would do this in the wild, but it is good fun for this exercise
     let (combinedTotal, combinedExpected) = progressByTask.reduce((Int64(0), Int64(0)), combine: { (accumulator, current) in

@@ -43,7 +43,7 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
       if let imageView = imageViews[index] {
         urlImageMapping[checkedUrl] = imageView
         imageView.image = UIImage(named: "Spinner")
-        //A bit unnecessary to use downloadTask (which creates a tmp file) could have used dataTask, but it was easier to get the progress bar like that...
+        //A bit unnecessary to use downloadTask (which creates a tmp file) could have used dataTask, but it was easier to calculate the progress like that...
         session!.downloadTaskWithURL(checkedUrl).resume()
       }
     }

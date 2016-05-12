@@ -29,6 +29,8 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    //The code below downloads the images every time this view is loaded. That might be what we want or not... If not, we could easily store the images/cache - felt it is outside of the scope of this exercise though.
+
     //Seems like a CollectionViewController would be better suited, but realized it too late
     let imageViews = [image1, image2, image3, image4]
     progress.progress = 0.0

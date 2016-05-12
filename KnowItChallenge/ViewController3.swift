@@ -31,9 +31,10 @@ class ViewController3: UIViewController {
     alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
       switch action.style {
         case .Default:
-          if let telUrl = NSURL(string: "tel://\(phoneNumber)") {
+          let urlEncoded = phoneNumber.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())!
+          if let telUrl = NSURL(string: "tel://\(urlEncoded)") {
             print("Opening url", telUrl)
-            UIApplication.sharedApplication().openURL(telUrl)
+            UIApplication.sharedApplication().openURL(telUrl  )
           } else {
             //Could be handled by emitting a new alert
             print("Failed", phoneNumber)

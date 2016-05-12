@@ -20,13 +20,6 @@ import Contacts
 import ContactsUI
 
 class ViewController2: UIViewController, CNContactPickerDelegate {
-
-  // MARK: Properties
-
-  func getContact(contactStore: CNContactStore) {
-
-  }
-
   @IBOutlet weak var phoneNumberTextField: UITextField!
 
   @IBAction func openPicker(sender: AnyObject) {
@@ -49,31 +42,6 @@ class ViewController2: UIViewController, CNContactPickerDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-
-
-//    let authorizationStatus = CNContactStore.authorizationStatusForEntityType(CNEntityType.Contacts)
-//    print("here")
-//    let contactStore = CNContactStore()
-//
-//    switch authorizationStatus {
-//    case .Denied, .Restricted:
-//      //1
-//      print("Denied")
-//          case .Authorized:
-//      //2
-//      print("Authorized")
-//    case .NotDetermined:
-//      //3
-//      contactStore.requestAccessForEntityType(CNEntityType.Contacts, completionHandler: {(accepted: Bool, error: NSError?) -> Void in
-//        if (accepted) {
-//          getContact(contactStore)
-//        } else {
-//          print("Not implemented") //TODO
-//        }
-//      })
-//      print("Not Determined")
-//    }
-
   }
 
   override func viewDidAppear(animated: Bool) {

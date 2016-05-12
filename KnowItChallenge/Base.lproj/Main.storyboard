@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller1-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KnowItChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController1" customModule="KnowItChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,33 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igo-gp-qgR">
-                                <rect key="frame" x="0.0" y="51" width="298" height="271"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnc-6c-BVa">
-                                <rect key="frame" x="20" y="415" width="171" height="78"/>
+                                <rect key="frame" x="0.0" y="506.5" width="309" height="93.5"/>
                                 <state key="normal" title="Contacts"/>
                                 <connections>
                                     <segue destination="oWw-8o-BES" kind="show" id="OtN-s2-Dwu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTz-oU-6Bh">
-                                <rect key="frame" x="253" y="439" width="30" height="30"/>
+                                <rect key="frame" x="299" y="506" width="300" height="94"/>
                                 <state key="normal" title="Call"/>
                                 <connections>
                                     <segue destination="o5A-W2-WSj" kind="show" id="gzL-6v-H75"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-ei-WtU">
+                                <rect key="frame" x="0.0" y="252" width="300" height="256"/>
+                            </imageView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eDg-I2-BZh">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="2"/>
+                            </progressView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="igo-gp-qgR">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="256"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68S-nv-jMX">
+                                <rect key="frame" x="299" y="0.0" width="300" height="256"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHI-ca-XVQ">
+                                <rect key="frame" x="299" y="252" width="300" height="256"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="image1" destination="igo-gp-qgR" id="D9B-Ds-66e"/>
+                        <outlet property="image2" destination="68S-nv-jMX" id="LaH-uC-QZ4"/>
+                        <outlet property="image3" destination="TnN-ei-WtU" id="TYP-fP-EWf"/>
+                        <outlet property="image4" destination="hHI-ca-XVQ" id="ezC-bQ-ODs"/>
+                        <outlet property="progress" destination="eDg-I2-BZh" id="bfE-kG-DOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="-11"/>
+            <point key="canvasLocation" x="151" y="-4"/>
         </scene>
         <!--View Controller2-->
         <scene sceneID="Gvd-lY-1RS">
@@ -120,10 +136,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncQ-Qh-tmd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="265"/>
+            <point key="canvasLocation" x="247" y="434"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pa3-G6-fij"/>
+        <segue reference="gzL-6v-H75"/>
     </inferredMetricsTieBreakers>
 </document>

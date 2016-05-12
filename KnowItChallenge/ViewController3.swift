@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController3: UIViewController {
-  var phoneNumberFromPicker: String = "" //hope there's no weirdness because this gets set in a segue
+  //Hope there's no weirdness because this gets set in a segue. Could have done some more research to figure out what was the best way to do that, but alas time is of the essence...
+  var phoneNumberFromPicker: String = ""
 
   // MARK: UIViewController
   override func viewDidLoad() {

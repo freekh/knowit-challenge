@@ -28,7 +28,7 @@ class ViewController3: UIViewController {
   @IBAction func executeCall(sender: AnyObject) {
     let phoneNumber = phoneNumberTextField.text! //closing over this later
     let alert = UIAlertController(title: "About to call", message: "You're about to call: \(phoneNumber)", preferredStyle: UIAlertControllerStyle.Alert)
-    let alertHandler: UIAlertAction! -> Void = { action in
+    let alertHandler = { (action: UIAlertAction!) -> Void in
       switch action.style {
       case .Default:
         let urlEncoded = phoneNumber.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLPathAllowedCharacterSet())! //Not entirely sure this is the correct encoding

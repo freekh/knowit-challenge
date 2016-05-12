@@ -8,37 +8,43 @@
 
 import UIKit
 
-class ViewController3: UIViewController, UITextFieldDelegate {
+class ViewController3: UIViewController {
+  var phoneNumberFromPicker: String = "" //hope there's no weirdness because this gets set in a segue
 
-
+  // MARK: UIViewController
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    
-  }
-
-  var currentPhoneNumber: String = ""
-
-  override func viewDidAppear(animated: Bool) {
-    phoneNumberTextField.text = currentPhoneNumber
+    phoneNumberTextField.text = phoneNumberFromPicker
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
 
+  // MARK: Properties
   @IBOutlet weak var phoneNumberTextField: UITextField!
 
+  // MARK: Actions
   @IBAction func executeCall(sender: AnyObject) {
-    print("executing call \(currentPhoneNumber)")
-    UIApplication.sharedApplication().openURL(NSURL(string: "tel://" + currentPhoneNumber)!)
+    let phoneNumber = phoneNumberTextField.text! //closing over this later
+    let alert = UIAlertController(title: "About to call", message: "You're about to call: \(phoneNumber)", preferredStyle: UIAlertControllerStyle.Alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { action in
+      switch action.style {
+        case .Default:
+          if let telUrl = NSURL(string: "tel://\(phoneNumber)") {
+            print("Opening url", telUrl)
+            UIApplication.sharedApplication().openURL(telUrl)
+          } else {
+            //Could be handled by emitting a new alert
+            print("Failed", phoneNumber)
+          }
+        case .Cancel:
+          print("Cancel")
+        case .Destructive:
+          print("Destroy")
+      }
+    }))
+    self.presentViewController(alert, animated: true, completion: nil)
   }
-
-  func textFieldDidEndEditing(textField: UITextField) {
-      print("--> \(textField.text)")
-      currentPhoneNumber = textField.text!
-  }
-
 }
 

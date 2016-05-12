@@ -9,7 +9,6 @@
 import UIKit
 
 class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
-
   // MARK: Properties
   @IBOutlet weak var progress: UIProgressView!
 
@@ -19,56 +18,33 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
   @IBOutlet weak var image3: UIImageView!
   @IBOutlet weak var image4: UIImageView!
 
+  // MARK: Progress
   var session:NSURLSession?
-  var currentTotal = 0
-  var expectedContentLength = 0
-  var downloadedImageUrlIndex: [NSURL] = []
-  var imageViews: [UIImageView!] = []
+  var progressByTask: Dictionary<NSURLSessionDownloadTask, (Int64, Int64)> = [:]
+  var urlImageMapping: Dictionary<NSURL, UIImageView> = [:]
 
+  // MARK: UIViewController
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    imageViews = [image1, image2, image3, image4]
+
+    //Seems like a CollectionViewController would be better suited, but realized it too late
+    let imageViews = [image1, image2, image3, image4]
     progress.progress = 0.0
 
     let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-    let manqueue = NSOperationQueue.mainQueue()
-    session = NSURLSession(configuration: configuration, delegate:self, delegateQueue: manqueue)
-    if let path = NSBundle.mainBundle().pathForResource("Properties", ofType: "plist") {
-      let props = NSDictionary(contentsOfFile: path)
-      for imageUrl in (props?.mutableArrayValueForKey("Images"))! {
-        if let checkedUrl = NSURL(string: imageUrl as! String) {
-          session!.downloadTaskWithURL(checkedUrl).resume()
-        }
+    session = NSURLSession(configuration: configuration, delegate:self, delegateQueue: nil)
+    let path = NSBundle.mainBundle().pathForResource("Properties", ofType: "plist")!
+    let props = NSDictionary(contentsOfFile: path)
+    let imageUrls = (props?.mutableArrayValueForKey("Images"))!
+    imageUrls.enumerate().forEach { (index, imageUrl) in
+      let checkedUrl = NSURL(string: imageUrl as! String)!
+      if let imageView = imageViews[index] {
+        urlImageMapping[checkedUrl] = imageView
+        imageView.image = UIImage(named: "Spinner")
+        //This seems to be async
+        session!.downloadTaskWithURL(checkedUrl).resume()
       }
     }
-  }
-
-  func URLSession(session: NSURLSession, task: NSURLSessionTask,
-                  didCompleteWithError maybeError: NSError?) {
-    if let error = maybeError {
-      print("Got an error", error)
-    }
-  }
-
-  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-    //chosing an image semi-randomly. obviously solveable in some other way
-    let emptyImageView = self.imageViews.filter({$0.image == nil}).first
-    let maybeData = NSData(contentsOfURL: location)
-    if let data = maybeData {
-      //not an ios expert but I believe
-      dispatch_async(dispatch_get_main_queue()) { () -> Void in
-        emptyImageView!.image = UIImage(data: data)
-      }
-    } else {
-      print("Could not convert", location, downloadTask.originalRequest?.URL)
-    }
-  }
-
-  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-    let percentageDownloaded = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-    print("Progress", percentageDownloaded * 100)
-    progress.progress =  percentageDownloaded
   }
 
   override func viewDidAppear(animated: Bool) {
@@ -77,7 +53,43 @@ class ViewController1: UIViewController, NSURLSessionDownloadDelegate {
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  }
+
+  // MARK: NSURLSessionDownloadDelegate
+  func URLSession(session: NSURLSession, task: NSURLSessionTask,
+                  didCompleteWithError maybeError: NSError?) {
+    if let error = maybeError {
+      let url = task.currentRequest?.URL
+      let imageView = urlImageMapping[url!]
+      imageView!.image = UIImage(named: "Error")
+      print("Got an error while downloading", url, error)
+    }
+  }
+
+  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
+    let data = NSData(contentsOfURL: location)!
+    let url = downloadTask.originalRequest?.URL
+    let imageView = urlImageMapping[url!]
+    //Not an ios expert but I believe this needs to go on the ui main thread
+    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+      imageView?.image = UIImage(data: data)
+    }
+  }
+
+  func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+    progressByTask[downloadTask] = (totalBytesWritten, totalBytesExpectedToWrite)
+    //Not sure I would do this in the wild, but it is good fun for this exercise
+    let (combinedTotal, combinedExpected) = progressByTask.reduce((Int64(0), Int64(0)), combine: { (accumulator, current) in
+      //Could do this more elegantly?
+      //Not sure if it is possible use pattern matching/partial function directly in Swift?
+      let (accTotal, accExpected) = accumulator
+      let (_, combined) = current
+      let (combinedTotal, combinedExpected) = combined
+      return (combinedTotal + accTotal, accExpected + combinedExpected)
+    })
+    let percentageDownloaded = Float(combinedTotal) / Float(combinedExpected)
+    print("Progress", downloadTask, combinedTotal, combinedExpected, percentageDownloaded * 100)
+    progress.progress =  percentageDownloaded
   }
 }
 

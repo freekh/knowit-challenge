@@ -15,6 +15,7 @@
 		9B1DEC041CE481A600F96BB4 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DEC031CE481A600F96BB4 /* ViewController2.swift */; };
 		9B1DEC061CE491C500F96BB4 /* ViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1DEC051CE491C500F96BB4 /* ViewController3.swift */; };
 		9B1DEC081CE4A01B00F96BB4 /* Properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B1DEC071CE4A01B00F96BB4 /* Properties.plist */; };
+		9B70904C1CE4FF590034106E /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9B70904B1CE4FF590034106E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9B1DEC031CE481A600F96BB4 /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		9B1DEC051CE491C500F96BB4 /* ViewController3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController3.swift; sourceTree = "<group>"; };
 		9B1DEC071CE4A01B00F96BB4 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Properties.plist; sourceTree = "<group>"; };
+		9B70904B1CE4FF590034106E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		9B1DEBE31CE47B1100F96BB4 = {
 			isa = PBXGroup;
 			children = (
+				9B70904B1CE4FF590034106E /* README.md */,
 				9B1DEBEE1CE47B1100F96BB4 /* KnowItChallenge */,
 				9B1DEBED1CE47B1100F96BB4 /* Products */,
 			);
@@ -60,15 +63,15 @@
 		9B1DEBEE1CE47B1100F96BB4 /* KnowItChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				9B1DEBEF1CE47B1100F96BB4 /* AppDelegate.swift */,
-				9B1DEBF11CE47B1100F96BB4 /* ViewController1.swift */,
 				9B1DEBF31CE47B1100F96BB4 /* Main.storyboard */,
-				9B1DEBF61CE47B1100F96BB4 /* Assets.xcassets */,
-				9B1DEBF81CE47B1100F96BB4 /* LaunchScreen.storyboard */,
-				9B1DEBFB1CE47B1100F96BB4 /* Info.plist */,
+				9B1DEBF11CE47B1100F96BB4 /* ViewController1.swift */,
 				9B1DEC031CE481A600F96BB4 /* ViewController2.swift */,
 				9B1DEC051CE491C500F96BB4 /* ViewController3.swift */,
 				9B1DEC071CE4A01B00F96BB4 /* Properties.plist */,
+				9B1DEBF61CE47B1100F96BB4 /* Assets.xcassets */,
+				9B1DEBEF1CE47B1100F96BB4 /* AppDelegate.swift */,
+				9B1DEBF81CE47B1100F96BB4 /* LaunchScreen.storyboard */,
+				9B1DEBFB1CE47B1100F96BB4 /* Info.plist */,
 			);
 			path = KnowItChallenge;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 			files = (
 				9B1DEC061CE491C500F96BB4 /* ViewController3.swift in Sources */,
 				9B1DEC041CE481A600F96BB4 /* ViewController2.swift in Sources */,
+				9B70904C1CE4FF590034106E /* README.md in Sources */,
 				9B1DEBF21CE47B1100F96BB4 /* ViewController1.swift in Sources */,
 				9B1DEBF01CE47B1100F96BB4 /* AppDelegate.swift in Sources */,
 			);

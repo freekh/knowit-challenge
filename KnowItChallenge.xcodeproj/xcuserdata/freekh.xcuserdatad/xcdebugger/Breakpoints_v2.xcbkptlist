@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KnowItChallenge/ViewController2.swift"
-            timestampString = "484752761.731425"
+            timestampString = "484775186.510227"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "openPicker(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "KnowItChallenge/ViewController2.swift"
-            timestampString = "484752761.731425"
+            filePath = "KnowItChallenge/ViewController1.swift"
+            timestampString = "484775510.427604"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "prepareForSegue(_:sender:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "URLSession(_:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,29 +42,75 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KnowItChallenge/ViewController3.swift"
-            timestampString = "484742960.430427"
+            timestampString = "484774611.625142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "executeCall(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "KnowItChallenge/ViewController2.swift"
-            timestampString = "484752761.731425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "prepareForSegue(_:sender:)"
-            landmarkType = "5">
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "ViewController3"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KnowItChallenge.ViewController3.currentPhoneNumber.getter : Swift.String"
+                  moduleName = "KnowItChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freekh/Projects/knowit-challenge/KnowItChallenge/KnowItChallenge/ViewController3.swift"
+                  timestampString = "484774611.790199"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "53">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KnowItChallenge.ViewController3.currentPhoneNumber.setter : Swift.String"
+                  moduleName = "KnowItChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freekh/Projects/knowit-challenge/KnowItChallenge/KnowItChallenge/ViewController3.swift"
+                  timestampString = "484774611.790395"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "95">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KnowItChallenge.ViewController3.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; KnowItChallenge.ViewController3"
+                  moduleName = "KnowItChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freekh/Projects/knowit-challenge/KnowItChallenge/KnowItChallenge/ViewController3.swift"
+                  timestampString = "484774611.790495"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KnowItChallenge.ViewController3.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;KnowItChallenge.ViewController3&gt;"
+                  moduleName = "KnowItChallenge"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/freekh/Projects/knowit-challenge/KnowItChallenge/KnowItChallenge/ViewController3.swift"
+                  timestampString = "484774611.790585"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
